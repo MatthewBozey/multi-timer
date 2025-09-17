@@ -15,15 +15,15 @@ export default {
       <div class="flex flex-wrap gap-2 justify-center">
         <button @click="start" :disabled="running"
                 class="px-3 py-1 bg-green-600 hover:bg-green-700 rounded flex items-center gap-1 text-sm">
-          <i class="fas fa-play text-xs"></i> Старт
+          <i class="fas fa-play text-xs"></i>
         </button>
         <button @click="pause" :disabled="!running"
                 class="px-3 py-1 bg-yellow-600 hover:bg-yellow-700 rounded flex items-center gap-1 text-sm">
-          <i class="fas fa-stop text-xs"></i> Стоп
+          <i class="fas fa-stop text-xs"></i>
         </button>
         <button @click="reset"
                 class="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded flex items-center gap-1 text-sm">
-          <i class="fas fa-redo text-xs"></i> Сброс
+          <i class="fas fa-redo text-xs"></i>
         </button>
       </div>
 
