@@ -19,7 +19,7 @@ export default {
         </button>
         <button @click="pause" :disabled="!running"
                 class="px-3 py-1 bg-yellow-600 hover:bg-yellow-700 rounded flex items-center gap-1 text-sm">
-          <i class="fas fa-pause text-xs"></i> Стоп
+          <i class="fas fa-stop text-xs"></i> Стоп
         </button>
         <button @click="reset"
                 class="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded flex items-center gap-1 text-sm">
@@ -70,6 +70,10 @@ export default {
     
     function reset(){
       timeLeft.value = initialSeconds;
+      if(running.value){
+        pause();
+        start();
+      }
     }
     
     function onFileChange(e){

@@ -3,7 +3,7 @@ import TimerItem from './components/TimerItem.js';
 const { createApp, ref, watch } = Vue;
 
 const App = {
-  components: { TimerItem, TimePicker: window.Vue3Timepicker.TimePicker },
+  components: { TimerItem },
   template: `
     <div class="max-w-5xl mx-auto">
       <h1 class="text-3xl font-bold mb-6 text-center">🎯 Мультитаймер</h1>
@@ -12,7 +12,9 @@ const App = {
         <input v-model="newTitle" type="text" placeholder="Название таймера"
                class="flex-1 p-2 rounded bg-gray-800 border border-gray-700 focus:outline-none" />
 
-        <TimePicker v-model="newTime" format="HH:mm:ss" :auto-close="true" class="w-36" />
+        <input v-model="newTime" type="text" placeholder="hh:mm:ss"
+               class="w-36 p-2 rounded bg-gray-800 border border-gray-700 focus:outline-none"
+               pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$" />
 
         <button @click="addTimer"
                 class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded">Добавить</button>
@@ -37,6 +39,8 @@ const App = {
       if(parts.length===3) [h,m,s]=parts;
       else if(parts.length===2) [m,s]=parts;
       else if(parts.length===1) s=parts[0];
+      if(s>=60){ m += Math.floor(s/60); s %= 60; }
+      if(m>=60){ h += Math.floor(m/60); m %= 60; }
       return h*3600 + m*60 + s;
     }
     
